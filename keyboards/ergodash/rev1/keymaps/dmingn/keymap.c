@@ -1,5 +1,5 @@
 #include QMK_KEYBOARD_H
-
+#include "jtu_custom_keycodes.h"
 
 #define _QWERTY 0
 #define _LOWER 1
@@ -7,7 +7,7 @@
 #define _ADJUST 16
 
 enum custom_keycodes {
-  QWERTY = SAFE_RANGE,
+  QWERTY = JTU_SAFE_RANGE,
   LOWER,
   RAISE,
   ADJUST,
@@ -114,6 +114,10 @@ void persistent_default_layer_set(uint16_t default_layer) {
 }
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+  bool continue_process = process_record_user_jtu(keycode, record);
+  if (continue_process == false) {
+    return false;
+  }
   switch (keycode) {
     case QWERTY:
       if (record->event.pressed) {
