@@ -1,13 +1,13 @@
 #include QMK_KEYBOARD_H
 #include "jtu_custom_keycodes.h"
 
-#define _QWERTY 0
+#define _QWERTY_WIN 0
 #define _LOWER 1
 #define _RAISE 2
 #define _ADJUST 16
 
 enum custom_keycodes {
-  QWERTY = JTU_SAFE_RANGE,
+  QWERTY_WIN = JTU_SAFE_RANGE,
   LOWER,
   RAISE,
   ADJUST,
@@ -21,7 +21,7 @@ enum custom_keycodes {
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
-  /* Qwerty
+  /* Qwerty (Win)
    * ,----------------------------------------------------------------------------------------------------------------------.
    * | ESC  |   1  |   2  |   3  |   4  |   5  |   -  |                    |   =  |   6  |   7  |   8  |   9  |   0  |  ~   |
    * |------+------+------+------+------+------+------+--------------------+------+------+------+------+------+------+------|
@@ -34,7 +34,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * | Caps |  GUI |  ALt | Ctrl |||||||| LoMh | Space|  Del |||||||| Bksp | Enter| RaHe |||||||| Left |  Up  | Down | Right|
    * ,----------------------------------------------------------------------------------------------------------------------.
    */
-  [_QWERTY] = LAYOUT( \
+  [_QWERTY_WIN] = LAYOUT( \
     KC_ESC,  KC_1,    JU_2,    KC_3,    KC_4,    KC_5,    JU_MINS,                   JU_EQL,  JU_6,    JU_7,    JU_8,    JU_9,    JU_0,    JU_GRV,  \
     KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    JU_LBRC,                   JU_RBRC, KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    JU_BSLS, \
     KC_LCTL, KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_PGUP,                   KC_PGDN, KC_H,    KC_J,    KC_K,    KC_L,    JU_SCLN, JU_QUOT, \
@@ -121,10 +121,10 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     return false;
   }
   switch (keycode) {
-    case QWERTY:
+    case QWERTY_WIN:
       if (record->event.pressed) {
          print("mode just switched to qwerty and this is a huge string\n");
-        set_single_persistent_default_layer(_QWERTY);
+        set_single_persistent_default_layer(_QWERTY_WIN);
       }
       return false;
       break;
