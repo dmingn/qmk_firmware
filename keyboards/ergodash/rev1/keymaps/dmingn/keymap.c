@@ -88,9 +88,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * |------+------+------+------+------+------+---------------------------+------+------+------+------+------+------+------|
    * |      |      |RGB ON|  MODE|  HUE-|  HUE+|      |                    |      |  SAT-|  SAT+|  VAL-|  VAL+|      |      |
    * |------+------+------+------+------+------+---------------------------+------+------+------+------+------+------+------|
-   * |      |      | BL ON|  BRTG|  INC |   DEC|      |                    |      | WhUp | Btn1 | MoUp | Btn2 | WhLf |      |
+   * |      |      | BL ON|  BRTG|  INC |   DEC|      |                    |      |      |      |      |      |      |      |
    * |------+------+------+------+------+------+---------------------------+------+------+------+------+------+------+------|
-   * |      |      |      |      |      |      |      |                    |      | WhDn | MoLf | MoDn | MoRg | WhRg |      |
+   * |      |      |      |      |      |      |      |                    |      |      |      |      |      |      |      |
    * |-------------+------+------+------+------+------+------+------+------+------+------+------+------+------+-------------|
    * |      |      |      |      ||||||||      |      |      ||||||||      |      |      ||||||||      |      |      |      |
    * ,----------------------------------------------------------------------------------------------------------------------.
@@ -98,8 +98,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [_ADJUST] = LAYOUT(
     RESET,   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, \
     XXXXXXX, XXXXXXX, RGB_TOG, RGB_MOD, RGB_HUD, RGB_HUI, XXXXXXX,                   XXXXXXX, RGB_SAD, RGB_SAI, RGB_VAD, RGB_VAI, XXXXXXX, XXXXXXX, \
-    XXXXXXX, XXXXXXX, BL_TOGG, BL_BRTG, BL_INC , BL_DEC , XXXXXXX,                   XXXXXXX, KC_WH_U, KC_BTN1, KC_MS_U, KC_BTN2, KC_WH_L, XXXXXXX, \
-    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                   XXXXXXX, KC_WH_D, KC_MS_L, KC_MS_D, KC_MS_R, KC_WH_R, XXXXXXX, \
+    XXXXXXX, XXXXXXX, BL_TOGG, BL_BRTG, BL_INC , BL_DEC , XXXXXXX,                   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, \
+    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, \
     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,          XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,          XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX  \
   )
 };
