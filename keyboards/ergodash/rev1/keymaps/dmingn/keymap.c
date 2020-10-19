@@ -16,6 +16,8 @@ enum custom_keycodes {
 #define EISU LALT(KC_GRV)
 #define LOMH LT(_LOWER, KC_MHEN)
 #define RAHE LT(_RAISE, KC_HENK)
+#define UNDS S(KC_RO)
+#define RSFT_US RSFT_T(UNDS)
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
@@ -36,7 +38,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_ESC,  KC_1,    JU_2,    KC_3,    KC_4,    KC_5,    JU_MINS,                   JU_EQL,  JU_6,    JU_7,    JU_8,    JU_9,    JU_0,    JU_GRV, \
     KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    JU_LBRC,                   JU_RBRC, KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    JU_BSLS, \
     KC_LCTL, KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_PGUP,                   KC_PGDN, KC_H,    KC_J,    KC_K,    KC_L,    JU_SCLN, JU_QUOT, \
-    KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_DEL,                    KC_BSPC, KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_RSFT, \
+    KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_DEL,                    KC_BSPC, KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, RSFT_US, \
     KC_CAPS, KC_LGUI, KC_LALT, KC_LCTL,          LOMH,    KC_SPC,  KC_SPC,  KC_SPC,  KC_ENT,  RAHE,             KC_LEFT, KC_UP,   KC_DOWN, KC_RGHT  \
   ),
 
