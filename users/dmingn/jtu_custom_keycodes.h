@@ -1,4 +1,4 @@
-// Keycodes to use jis keycode in us keymap
+// Keycodes to emulate us keycode using jp keycodes
 
 #pragma once
 
