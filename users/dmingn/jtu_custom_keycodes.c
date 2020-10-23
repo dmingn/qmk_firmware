@@ -42,7 +42,7 @@ bool process_record_user_jtu(uint16_t keycode, keyrecord_t *record) {
         CASE(JU_BSLS, TAP(JP_BSLS), SHIFT_TAP(JP_YEN))
         CASE(JU_SCLN, TAP(JP_SCLN), TAP(JP_COLN))
         CASE(JU_QUOT, SHIFT_TAP(JP_7), SHIFT_TAP(JP_2))
-        CASE(JU_GRV, SHIFT_TAP(JP_CIRC), SHIFT_TAP(JP_AT))
+        CASE(JU_GRV, SHIFT_TAP(JP_AT), SHIFT_TAP(JP_CIRC))
         case JU_CAPS:
             if (record->event.pressed) {
                 SHIFT_TAP(JP_EISU);
