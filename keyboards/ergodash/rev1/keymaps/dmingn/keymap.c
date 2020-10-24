@@ -9,8 +9,8 @@
 #define _ADJUST 16
 
 enum custom_keycodes {
-  QWERTY_WIN = JTU_SAFE_RANGE,
-  QWERTY_MAC,
+  QWE_WIN = JTU_SAFE_RANGE,
+  QWE_MAC,
   LOWER,
   RAISE,
   ADJUST,
@@ -23,8 +23,6 @@ enum custom_keycodes {
 #define RSFT_US RSFT_T(UNDS)
 #define LOEN LT(_LOWER, KC_HAEN)
 #define RAJA LT(_RAISE, KC_HANJ)
-#define WIN DF(_QWERTY_WIN)
-#define MAC DF(_QWERTY_MAC)
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
@@ -128,7 +126,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [_ADJUST] = LAYOUT(
     RESET,   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, \
     XXXXXXX, XXXXXXX, RGB_TOG, RGB_MOD, RGB_HUD, RGB_HUI, XXXXXXX,                   XXXXXXX, RGB_SAD, RGB_SAI, RGB_VAD, RGB_VAI, XXXXXXX, XXXXXXX, \
-    XXXXXXX, XXXXXXX, BL_TOGG, BL_BRTG, BL_INC , BL_DEC , WIN,                       MAC,     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, \
+    XXXXXXX, XXXXXXX, BL_TOGG, BL_BRTG, BL_INC , BL_DEC , QWE_WIN,                   QWE_MAC, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, \
     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, \
     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,          XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,          XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX  \
   )
@@ -149,10 +147,19 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     return false;
   }
   switch (keycode) {
-    case QWERTY_WIN:
+    case QWE_WIN:
       if (record->event.pressed) {
-         print("mode just switched to qwerty and this is a huge string\n");
         set_single_persistent_default_layer(_QWERTY_WIN);
+        rgblight_mode(RGBLIGHT_MODE_STATIC_LIGHT);
+        rgblight_sethsv(187, 191, 191);
+      }
+      return false;
+      break;
+    case QWE_MAC:
+      if (record->event.pressed) {
+        set_single_persistent_default_layer(_QWERTY_MAC);
+        rgblight_mode(RGBLIGHT_MODE_STATIC_LIGHT);
+        rgblight_sethsv(135, 191, 191);
       }
       return false;
       break;
@@ -186,4 +193,35 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       break;
   }
   return true;
+}
+
+const rgblight_segment_t PROGMEM rgblight_layer_lower[] = RGBLIGHT_LAYER_SEGMENTS(
+    {10, 2, 0, 0, 191}
+);
+
+const rgblight_segment_t PROGMEM rgblight_layer_raise[] = RGBLIGHT_LAYER_SEGMENTS(
+    {12, 2, 0, 0, 191}
+);
+
+const rgblight_segment_t PROGMEM rgblight_layer_capslock[] = RGBLIGHT_LAYER_SEGMENTS(
+    {4, 1, 0, 0, 191}
+);
+
+const rgblight_segment_t* const PROGMEM my_rgblight_layers[] = RGBLIGHT_LAYERS_LIST(
+    rgblight_layer_lower,
+    rgblight_layer_raise,
+    rgblight_layer_capslock
+);
+
+void keyboard_post_init_user(void) {rgblight_layers = my_rgblight_layers;}
+
+layer_state_t layer_state_set_user(layer_state_t state) {
+    rgblight_set_layer_state(0, layer_state_cmp(state, _LOWER));
+    rgblight_set_layer_state(1, layer_state_cmp(state, _RAISE));
+    return state;
+}
+
+bool led_update_user(led_t led_state) {
+    rgblight_set_layer_state(2, led_state.caps_lock);
+    return true;
 }
