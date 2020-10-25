@@ -151,7 +151,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       if (record->event.pressed) {
         set_single_persistent_default_layer(_QWERTY_WIN);
         rgblight_mode(RGBLIGHT_MODE_STATIC_LIGHT);
-        rgblight_sethsv(187, 191, 191);
+        rgblight_sethsv(187, 191, 95);
       }
       return false;
       break;
@@ -159,7 +159,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       if (record->event.pressed) {
         set_single_persistent_default_layer(_QWERTY_MAC);
         rgblight_mode(RGBLIGHT_MODE_STATIC_LIGHT);
-        rgblight_sethsv(135, 191, 191);
+        rgblight_sethsv(135, 191, 95);
       }
       return false;
       break;
@@ -204,7 +204,7 @@ const rgblight_segment_t PROGMEM rgblight_layer_raise[] = RGBLIGHT_LAYER_SEGMENT
 );
 
 const rgblight_segment_t PROGMEM rgblight_layer_capslock[] = RGBLIGHT_LAYER_SEGMENTS(
-    {4, 1, 0, 0, 191}
+    {4, 1, 0, 0, 127}
 );
 
 const rgblight_segment_t* const PROGMEM my_rgblight_layers[] = RGBLIGHT_LAYERS_LIST(
