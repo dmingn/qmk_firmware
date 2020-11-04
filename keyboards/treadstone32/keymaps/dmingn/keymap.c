@@ -74,11 +74,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [_LOWER] = LAYOUT(
   //,---------------------------------------------------------------------------------------------------.
-         KC_F1,    KC_F2,    KC_F3,    KC_F4,    KC_F5,  KC_MINS,   KC_EQL,  KC_LBRC,  KC_RBRC,  KC_BSLS,
+         KC_F1,    KC_F2,    KC_F3,    KC_F4,    KC_F5,  JP_MINS,  JP_CIRC,   JP_YEN,    JP_AT,  JP_LBRC,
   //|---------+---------+---------+---------+---------+---------+---------+---------+---------+---------|
-       KC_F6SF,    KC_F7,    KC_F8,    KC_F9,   KC_F10,  XXXXXXX,  XXXXXXX,  KC_SCLN,  KC_QUOT,  KC_DLSF,
+       KC_F6SF,    KC_F7,    KC_F8,    KC_F9,   KC_F10,  XXXXXXX,  JP_SCLN,  JP_COLN,  JP_RBRC,  KC_DLSF,
   //|---------+---------+---------+---------+---------+---------+---------+---------+---------+---------|
-       KC_11CT,  KC_12AL,   KC_ESC,   KC_TAB,  JP_MHEN,  JP_HENK,  XXXXXXX,  XXXXXXX,    KC_RO,   KC_GRV,
+       KC_11CT,  KC_12AL,   KC_ESC,   KC_TAB,  JP_MHEN,  JP_HENK,  XXXXXXX,  XXXXXXX,  XXXXXXX,  JP_BSLS,
   //`---------+---------+---------+---------+---------+---------+---------+---------+---------+---------'
                                                _______,  KC_MLAD
   //                                        `---------|---------'
