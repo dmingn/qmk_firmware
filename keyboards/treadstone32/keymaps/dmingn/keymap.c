@@ -35,8 +35,8 @@ enum custom_keycodes {
 // Base layer mod tap
 #define JP_A_SF  LSFT_T(JP_A)
 #define JP_Z_CT  LCTL_T(JP_Z)
-#define JP_X_AL  LALT_T(JP_X)
-#define JP_C_GU  LGUI_T(JP_C)
+#define JP_X_GU  LGUI_T(JP_X)
+#define JP_C_AL  LALT_T(JP_C)
 #define JP_SSCT  RCTL_T(JP_SLSH)
 #define KC_BSSF  RSFT_T(KC_BSPC)
 
@@ -66,7 +66,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|---------+---------+---------+---------+---------+---------+---------+---------+---------+---------|
        JP_A_SF,     JP_S,     JP_D,     JP_F,     JP_G,     JP_H,     JP_J,     JP_K,     JP_L,  KC_BSSF,
   //|---------+---------+---------+---------+---------+---------+---------+---------+---------+---------|
-       JP_Z_CT,  JP_X_AL,  JP_C_GU,     JP_V,     JP_B,     JP_N,     JP_M,  JP_COMM,   JP_DOT,  JP_SSCT,
+       JP_Z_CT,  JP_X_GU,  JP_C_AL,     JP_V,     JP_B,     JP_N,     JP_M,  JP_COMM,   JP_DOT,  JP_SSCT,
   //`---------+---------+---------+---------+---------+---------+---------+---------+---------+---------'
                                                KC_SPLO,  KC_ENRA
   //                                        `---------|---------'
@@ -90,7 +90,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|---------+---------+---------+---------+---------+---------+---------+---------+---------+---------|
        KC_LSFT,  KC_HOME,  KC_PGDN,  KC_PGUP,   KC_END,  KC_LEFT,  KC_DOWN,    KC_UP,  KC_RGHT,  KC_DLSF,
   //|---------+---------+---------+---------+---------+---------+---------+---------+---------+---------|
-       KC_LCTL,  KC_LALT,  KC_LGUI,  XXXXXXX,  XXXXXXX,  JP_MINS,  JP_UNDS,  JP_COMM,   JP_DOT,  JP_SSCT,
+       KC_LCTL,  KC_LGUI,  KC_LALT,  XXXXXXX,  XXXXXXX,  JP_MINS,  JP_UNDS,  JP_COMM,   JP_DOT,  JP_SSCT,
   //`---------+---------+---------+---------+---------+---------+---------+---------+---------+---------'
                                                _______,  _______
   //                                        `---------|---------'
