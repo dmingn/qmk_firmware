@@ -39,7 +39,7 @@ enum custom_keycodes {
 #define KC_X_AL  LALT_T(KC_X)
 #define KC_C_GU  LGUI_T(KC_C)
 #define KC_SSCT  RCTL_T(KC_SLSH)
-#define KC_ENSF  RSFT_T(KC_ENT)
+#define KC_BSSF  RSFT_T(KC_BSPC)
 
 // Lower layer mod tap
 #define KC_F6SF  LSFT_T(KC_F6)
@@ -48,8 +48,8 @@ enum custom_keycodes {
 #define KC_12AL  LALT_T(KC_F12)
 
 // Layer tap
-#define KC_BSLO  LT(_LOWER, KC_BSPC)
-#define KC_SPRA  LT(_RAISE, KC_SPC)
+#define KC_SPLO  LT(_LOWER, KC_SPC)
+#define KC_ENRA  LT(_RAISE, KC_ENT)
 
 // Tap dance
 // #define KC_CODO  TD(TD_CODO)
@@ -65,11 +65,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //,---------------------------------------------------------------------------------------------------.
           KC_Q,     KC_W,     KC_E,     KC_R,     KC_T,     KC_Y,     KC_U,     KC_I,     KC_O,     KC_P,
   //|---------+---------+---------+---------+---------+---------+---------+---------+---------+---------|
-       KC_A_SF,     KC_S,     KC_D,     KC_F,     KC_G,     KC_H,     KC_J,     KC_K,     KC_L,  KC_ENSF,
+       KC_A_SF,     KC_S,     KC_D,     KC_F,     KC_G,     KC_H,     KC_J,     KC_K,     KC_L,  KC_BSSF,
   //|---------+---------+---------+---------+---------+---------+---------+---------+---------+---------|
        KC_Z_CT,  KC_X_AL,  KC_C_GU,     KC_V,     KC_B,     KC_N,     KC_M,  KC_COMM,   KC_DOT,  KC_SSCT,
   //`---------+---------+---------+---------+---------+---------+---------+---------+---------+---------'
-                                               KC_BSLO,  KC_SPRA
+                                               KC_SPLO,  KC_ENRA
   //                                        `---------|---------'
   ),
 
@@ -112,9 +112,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
   switch (keycode) {
-    case KC_BSLO:
+    case KC_SPLO:
       return TAPPING_LAYER_TERM;
-    case KC_SPRA:
+    case KC_ENRA:
       return TAPPING_LAYER_TERM;
     default:
       return TAPPING_TERM;
