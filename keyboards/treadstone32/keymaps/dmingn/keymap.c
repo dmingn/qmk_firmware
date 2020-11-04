@@ -22,7 +22,6 @@ enum custom_keycodes {
   RGBRST = SAFE_RANGE,
   LOWER,
   RAISE,
-  KANJI,
 };
 
 // enum tapdances{
@@ -79,7 +78,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|---------+---------+---------+---------+---------+---------+---------+---------+---------+---------|
        KC_F6SF,    KC_F7,    KC_F8,    KC_F9,   KC_F10,  XXXXXXX,  XXXXXXX,  KC_SCLN,  KC_QUOT,  KC_DLSF,
   //|---------+---------+---------+---------+---------+---------+---------+---------+---------+---------|
-       KC_11CT,  KC_12AL,   KC_ESC,   KC_TAB,    KANJI,  XXXXXXX,  XXXXXXX,  XXXXXXX,    KC_RO,   KC_GRV,
+       KC_11CT,  KC_12AL,   KC_ESC,   KC_TAB,  JP_MHEN,  JP_HENK,  XXXXXXX,  XXXXXXX,    KC_RO,   KC_GRV,
   //`---------+---------+---------+---------+---------+---------+---------+---------+---------+---------'
                                                _______,  KC_MLAD
   //                                        `---------|---------'
@@ -126,17 +125,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
   bool result = false;
   switch (keycode) {
-    case KANJI:
-      if (record->event.pressed) {
-        if (keymap_config.swap_lalt_lgui == false) {
-          register_code(KC_LANG2);
-        } else {
-          SEND_STRING(SS_LALT("`"));
-        }
-      } else {
-        unregister_code(KC_LANG2);
-      }
-      break;
     #ifdef RGBLIGHT_ENABLE
       //led operations - RGB mode change now updates the RGB_current_mode to allow the right RGB mode to be set after reactive keys are released
       case RGB_MOD:
