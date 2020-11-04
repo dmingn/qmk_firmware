@@ -90,7 +90,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|---------+---------+---------+---------+---------+---------+---------+---------+---------+---------|
        KC_LSFT,  KC_HOME,  KC_PGDN,  KC_PGUP,   KC_END,  KC_LEFT,  KC_DOWN,    KC_UP,  KC_RGHT,  KC_DLSF,
   //|---------+---------+---------+---------+---------+---------+---------+---------+---------+---------|
-       KC_LCTL,  KC_LALT,  KC_LGUI,  XXXXXXX,  XXXXXXX,  KC_MINS,    KC_RO,  KC_COMM,   KC_DOT,  JP_SSCT,
+       KC_LCTL,  KC_LALT,  KC_LGUI,  XXXXXXX,  XXXXXXX,  JP_MINS,  JP_UNDS,  JP_COMM,   JP_DOT,  JP_SSCT,
   //`---------+---------+---------+---------+---------+---------+---------+---------+---------+---------'
                                                _______,  _______
   //                                        `---------|---------'
