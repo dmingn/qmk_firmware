@@ -34,11 +34,11 @@ enum custom_keycodes {
 #define KC_MLAD  MO(_ADJUST)
 
 // Base layer mod tap
-#define KC_A_SF  LSFT_T(KC_A)
-#define KC_Z_CT  LCTL_T(KC_Z)
-#define KC_X_AL  LALT_T(KC_X)
-#define KC_C_GU  LGUI_T(KC_C)
-#define KC_SSCT  RCTL_T(KC_SLSH)
+#define JP_A_SF  LSFT_T(JP_A)
+#define JP_Z_CT  LCTL_T(JP_Z)
+#define JP_X_AL  LALT_T(JP_X)
+#define JP_C_GU  LGUI_T(JP_C)
+#define JP_SSCT  RCTL_T(JP_SLSH)
 #define KC_BSSF  RSFT_T(KC_BSPC)
 
 // Lower layer mod tap
@@ -63,11 +63,11 @@ enum custom_keycodes {
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [_BASE] = LAYOUT(
   //,---------------------------------------------------------------------------------------------------.
-          KC_Q,     KC_W,     KC_E,     KC_R,     KC_T,     KC_Y,     KC_U,     KC_I,     KC_O,     KC_P,
+          JP_Q,     JP_W,     JP_E,     JP_R,     JP_T,     JP_Y,     JP_U,     JP_I,     JP_O,     JP_P,
   //|---------+---------+---------+---------+---------+---------+---------+---------+---------+---------|
-       KC_A_SF,     KC_S,     KC_D,     KC_F,     KC_G,     KC_H,     KC_J,     KC_K,     KC_L,  KC_BSSF,
+       JP_A_SF,     JP_S,     JP_D,     JP_F,     JP_G,     JP_H,     JP_J,     JP_K,     JP_L,  KC_BSSF,
   //|---------+---------+---------+---------+---------+---------+---------+---------+---------+---------|
-       KC_Z_CT,  KC_X_AL,  KC_C_GU,     KC_V,     KC_B,     KC_N,     KC_M,  KC_COMM,   KC_DOT,  KC_SSCT,
+       JP_Z_CT,  JP_X_AL,  JP_C_GU,     JP_V,     JP_B,     JP_N,     JP_M,  JP_COMM,   JP_DOT,  JP_SSCT,
   //`---------+---------+---------+---------+---------+---------+---------+---------+---------+---------'
                                                KC_SPLO,  KC_ENRA
   //                                        `---------|---------'
@@ -91,7 +91,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|---------+---------+---------+---------+---------+---------+---------+---------+---------+---------|
        KC_LSFT,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  KC_LEFT,  KC_DOWN,    KC_UP,  KC_RGHT,  KC_LSFT,
   //|---------+---------+---------+---------+---------+---------+---------+---------+---------+---------|
-       KC_LCTL,  KC_LALT,  KC_LGUI,  XXXXXXX,  XXXXXXX,  KC_MINS,    KC_RO,  KC_COMM,   KC_DOT,  KC_SSCT,
+       KC_LCTL,  KC_LALT,  KC_LGUI,  XXXXXXX,  XXXXXXX,  KC_MINS,    KC_RO,  KC_COMM,   KC_DOT,  JP_SSCT,
   //`---------+---------+---------+---------+---------+---------+---------+---------+---------+---------'
                                                _______,  _______
   //                                        `---------|---------'
