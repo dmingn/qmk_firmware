@@ -44,7 +44,8 @@ enum custom_keycodes {
 #define KC_F6SF  LSFT_T(KC_F6)
 #define KC_DLSF  RSFT_T(KC_DEL)
 #define KC_11CT  LCTL_T(KC_F11)
-#define KC_12AL  LALT_T(KC_F12)
+#define KC_12GU  LGUI_T(KC_F12)
+#define KC_ESAL  LALT_T(KC_ESC)
 
 // Layer tap
 #define KC_SPLO  LT(_LOWER, KC_SPC)
@@ -78,7 +79,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|---------+---------+---------+---------+---------+---------+---------+---------+---------+---------|
        KC_F6SF,    KC_F7,    KC_F8,    KC_F9,   KC_F10,  XXXXXXX,  JP_SCLN,  JP_COLN,  JP_RBRC,  KC_DLSF,
   //|---------+---------+---------+---------+---------+---------+---------+---------+---------+---------|
-       KC_11CT,  KC_12AL,   KC_ESC,   KC_TAB,  JP_MHEN,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  JP_BSLS,
+       KC_11CT,  KC_12GU,  KC_ESAL,   KC_TAB,  JP_MHEN,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  JP_BSLS,
   //`---------+---------+---------+---------+---------+---------+---------+---------+---------+---------'
                                                _______,  KC_MLAD
   //                                        `---------|---------'
