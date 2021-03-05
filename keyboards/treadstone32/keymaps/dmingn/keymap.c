@@ -1,5 +1,6 @@
 #include QMK_KEYBOARD_H
 #include "keymap_jp.h"
+#include "jtu_custom_keycodes.h"
 
 
 #ifdef RGBLIGHT_ENABLE
@@ -19,7 +20,7 @@ enum layer_number {
 };
 
 enum custom_keycodes {
-  RGBRST = SAFE_RANGE,
+  RGBRST = JTU_SAFE_RANGE,
   LOWER,
   RAISE,
 };
@@ -75,11 +76,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [_LOWER] = LAYOUT(
   //,---------------------------------------------------------------------------------------------------.
-         KC_F1,    KC_F2,    KC_F3,    KC_F4,    KC_F5,  JP_MINS,  JP_CIRC,   JP_YEN,    JP_AT,  JP_LBRC,
+       KC_EXLM,  JP_DQUO,  KC_HASH,   KC_DLR,  KC_PERC,  JP_AMPR,  JU_QUOT,  JP_LPRN,  JP_RPRN,  KC_MINS,
   //|---------+---------+---------+---------+---------+---------+---------+---------+---------+---------|
-       KC_F6SF,    KC_F7,    KC_F8,    KC_F9,   KC_F10,  XXXXXXX,  JP_SCLN,  JP_COLN,  JP_RBRC,  KC_DLSF,
+        JU_GRV,    JP_AT,  JP_CIRC,   JU_EQL,  XXXXXXX,  JU_SCLN,  KC_COLN,  JU_LBRC,  JU_RBRC,  KC_DLSF,
   //|---------+---------+---------+---------+---------+---------+---------+---------+---------+---------|
-       KC_11CT,  KC_12GU,  KC_ESAL,   KC_TAB,  JP_MHEN,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  JP_BSLS,
+       JP_PIPE,  JP_TILD,  JP_PLUS,  JP_ASTR,  JP_MHEN,  XXXXXXX,  JU_BSLS,  JP_LCBR,  JP_RCBR,  JP_UNDS,
   //`---------+---------+---------+---------+---------+---------+---------+---------+---------+---------'
                                                _______,  KC_MLAD
   //                                        `---------|---------'
@@ -87,11 +88,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [_RAISE] = LAYOUT(
   //,---------------------------------------------------------------------------------------------------.
-          JP_1,     JP_2,     JP_3,     JP_4,     JP_5,     JP_6,     JP_7,     JP_8,     JP_9,     JP_0,
+          KC_1,     JU_2,     KC_3,     KC_4,     KC_5,     JU_6,     JU_7,     JU_8,     JU_9,     JU_0,
   //|---------+---------+---------+---------+---------+---------+---------+---------+---------+---------|
        KC_LSFT,  KC_HOME,  KC_PGDN,  KC_PGUP,   KC_END,  KC_LEFT,  KC_DOWN,    KC_UP,  KC_RGHT,  KC_DLSF,
   //|---------+---------+---------+---------+---------+---------+---------+---------+---------+---------|
-       KC_LCTL,  KC_LGUI,  KC_LALT,  XXXXXXX,  XXXXXXX,  JP_HENK,  JP_MINS,  JP_COMM,   JP_DOT,  JP_SSCT,
+       KC_LCTL,  KC_LGUI,  KC_ESAL,   KC_TAB,  XXXXXXX,  JP_HENK,  XXXXXXX,  XXXXXXX,  XXXXXXX,  KC_RCTL,
   //`---------+---------+---------+---------+---------+---------+---------+---------+---------+---------'
                                                _______,  _______
   //                                        `---------|---------'
@@ -99,11 +100,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [_ADJUST] = LAYOUT(
   //,---------------------------------------------------------------------------------------------------.
-        RESET,    RGBRST,  AG_NORM,  AG_SWAP,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,   KC_INS,  KC_PSCR,
+         KC_F1,    KC_F2,    KC_F3,    KC_F4,    KC_F5,    KC_F6,    KC_F7,    KC_F8,    KC_F9,   KC_F10,
   //|---------+---------+---------+---------+---------+---------+---------+---------+---------+---------|
-       RGB_TOG,  RGB_HUI,  RGB_SAI,  RGB_VAI,  XXXXXXX,  KC_MS_L,  KC_MS_D,  KC_MS_U,  KC_MS_R,  KC_NLCK,
+         RESET,  RGB_TOG,  RGB_HUI,  RGB_SAI,  RGB_VAI,  XXXXXXX,  XXXXXXX,  XXXXXXX,   KC_F11,   KC_F12,
   //|---------+---------+---------+---------+---------+---------+---------+---------+---------+---------|
-       RGB_MOD,  RGB_HUD,  RGB_SAD,  RGB_VAD,  XXXXXXX,  KC_BTN1,  KC_BTN2,  XXXXXXX,  XXXXXXX,  XXXXXXX,
+        RGBRST,  RGB_MOD,  RGB_HUD,  RGB_SAD,  RGB_VAD,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  KC_PSCR,
   //`---------+---------+---------+---------+---------+---------+---------+---------+---------+---------'
                                                _______,  _______
   //                                        `---------|---------'
@@ -123,6 +124,10 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
 
 int RGB_current_mode;
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+  bool continue_process = process_record_user_jtu(keycode, record);
+  if (continue_process == false) {
+    return false;
+  }
 
   bool result = false;
   switch (keycode) {
