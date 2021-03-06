@@ -30,9 +30,6 @@ enum custom_keycodes {
 //   TD_SLRO,
 // };
 
-// Layer Mode aliases
-#define KC_MLAD  MO(_ADJUST)
-
 // Base layer mod tap
 #define JP_A_SF  LSFT_T(JP_A)
 #define JP_Z_CT  LCTL_T(JP_Z)
@@ -82,7 +79,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|---------+---------+---------+---------+---------+---------+---------+---------+---------+---------|
        JP_PIPE,  JP_TILD,  JP_PLUS,  JP_ASTR,  JP_MHEN,  XXXXXXX,  JU_BSLS,  JP_LCBR,  JP_RCBR,  JP_UNDS,
   //`---------+---------+---------+---------+---------+---------+---------+---------+---------+---------'
-                                               _______,  KC_MLAD
+                                                 LOWER,    RAISE
   //                                        `---------|---------'
   ),
 
@@ -94,7 +91,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|---------+---------+---------+---------+---------+---------+---------+---------+---------+---------|
        KC_LCTL,  KC_LGUI,  KC_ESAL,   KC_TAB,  XXXXXXX,  JP_HENK,  XXXXXXX,  XXXXXXX,  XXXXXXX,  KC_RCTL,
   //`---------+---------+---------+---------+---------+---------+---------+---------+---------+---------'
-                                               _______,  _______
+                                                 LOWER,    RAISE
   //                                        `---------|---------'
   ),
 
@@ -106,7 +103,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|---------+---------+---------+---------+---------+---------+---------+---------+---------+---------|
         RGBRST,  RGB_MOD,  RGB_HUD,  RGB_SAD,  RGB_VAD,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  KC_PSCR,
   //`---------+---------+---------+---------+---------+---------+---------+---------+---------+---------'
-                                               _______,  _______
+                                                 LOWER,    RAISE
   //                                        `---------|---------'
   )
 };
@@ -131,6 +128,26 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
   bool result = false;
   switch (keycode) {
+    case LOWER:
+      if (record->event.pressed) {
+        layer_on(_LOWER);
+        update_tri_layer(_LOWER, _RAISE, _ADJUST);
+      } else {
+        layer_off(_LOWER);
+        update_tri_layer(_LOWER, _RAISE, _ADJUST);
+      }
+      result = false;
+      break;
+    case RAISE:
+      if (record->event.pressed) {
+        layer_on(_RAISE);
+        update_tri_layer(_LOWER, _RAISE, _ADJUST);
+      } else {
+        layer_off(_RAISE);
+        update_tri_layer(_LOWER, _RAISE, _ADJUST);
+      }
+      result = false;
+      break;
     #ifdef RGBLIGHT_ENABLE
       //led operations - RGB mode change now updates the RGB_current_mode to allow the right RGB mode to be set after reactive keys are released
       case RGB_MOD:
