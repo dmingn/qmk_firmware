@@ -117,6 +117,40 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
   }
 }
 
+bool process_record_user_lt(
+  uint16_t keycode,
+  keyrecord_t *record,
+  uint16_t keycode_lt,
+  uint16_t keycode_tap,
+  bool *lt_tap_flag_ptr,
+  enum layer_number layer_lt,
+  enum layer_number layer_x,
+  enum layer_number layer_y,
+  enum layer_number layer_z
+) {
+  if (keycode == keycode_lt) {
+    if (record->event.pressed) {
+      *lt_tap_flag_ptr = true;
+
+      layer_on(layer_lt);
+      update_tri_layer(layer_x, layer_y, layer_z);
+    } else {
+      layer_off(layer_lt);
+      update_tri_layer(layer_x, layer_y, layer_z);
+
+      if (*lt_tap_flag_ptr) {
+        tap_code(keycode_tap);
+      }
+      *lt_tap_flag_ptr = false;
+    }
+    return false;
+  } else {
+    *lt_tap_flag_ptr = false;
+  }
+
+  return true;
+}
+
 int RGB_current_mode;
 static bool splo_sp_flag = false;
 static bool enra_en_flag = false;
@@ -126,30 +160,18 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     return false;
   }
 
+  if (!process_record_user_lt(keycode, record, KC_SPLO, KC_SPC, &splo_sp_flag, _LOWER, _LOWER, _RAISE, _ADJUST)) {
+    return false;
+  }
+
+  if (!process_record_user_lt(keycode, record, KC_ENRA, KC_ENT, &enra_en_flag, _RAISE, _LOWER, _RAISE, _ADJUST)) {
+    return false;
+  }
+
   bool result = false;
   switch (keycode) {
-    case KC_SPLO:
-      if (record->event.pressed) {
-        splo_sp_flag = true;
-        enra_en_flag = false;
-
-        layer_on(_LOWER);
-        update_tri_layer(_LOWER, _RAISE, _ADJUST);
-      } else {
-        layer_off(_LOWER);
-        update_tri_layer(_LOWER, _RAISE, _ADJUST);
-
-        if (splo_sp_flag) {
-          tap_code(KC_SPC);
-        }
-        splo_sp_flag = false;
-      }
-      return false;
-      break;
     case LOWER:
       if (record->event.pressed) {
-        enra_en_flag = false;
-
         layer_on(_LOWER);
         update_tri_layer(_LOWER, _RAISE, _ADJUST);
       } else {
@@ -158,28 +180,8 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       }
       result = false;
       break;
-    case KC_ENRA:
-      if (record->event.pressed) {
-        splo_sp_flag = false;
-        enra_en_flag = true;
-
-        layer_on(_RAISE);
-        update_tri_layer(_LOWER, _RAISE, _ADJUST);
-      } else {
-        layer_off(_RAISE);
-        update_tri_layer(_LOWER, _RAISE, _ADJUST);
-
-        if (enra_en_flag) {
-          tap_code(KC_ENT);
-        }
-        enra_en_flag = false;
-      }
-      return false;
-      break;
     case RAISE:
       if (record->event.pressed) {
-        splo_sp_flag = false;
-
         layer_on(_RAISE);
         update_tri_layer(_LOWER, _RAISE, _ADJUST);
       } else {
@@ -206,11 +208,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         break;
     #endif
     default:
-      if (record->event.pressed) {
-        splo_sp_flag = false;
-        enra_en_flag = false;
-      }
-
       result = true;
       break;
   }
