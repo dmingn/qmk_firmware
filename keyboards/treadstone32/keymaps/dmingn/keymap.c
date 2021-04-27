@@ -155,16 +155,15 @@ int RGB_current_mode;
 static bool splo_sp_flag = false;
 static bool enra_en_flag = false;
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-  bool continue_process = process_record_user_jtu(keycode, record);
-  if (continue_process == false) {
-    return false;
-  }
-
   if (!process_record_user_lt(keycode, record, KC_SPLO, KC_SPC, &splo_sp_flag, _LOWER, _LOWER, _RAISE, _ADJUST)) {
     return false;
   }
 
   if (!process_record_user_lt(keycode, record, KC_ENRA, KC_ENT, &enra_en_flag, _RAISE, _LOWER, _RAISE, _ADJUST)) {
+    return false;
+  }
+
+  if (!process_record_user_jtu(keycode, record)) {
     return false;
   }
 
