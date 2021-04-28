@@ -73,9 +73,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //,---------------------------------------------------------------------------------------------------.
        KC_EXLM,  JP_DQUO,  KC_HASH,   KC_DLR,  KC_PERC,  JP_AMPR,  JU_QUOT,  JP_LPRN,  JP_RPRN,  KC_MINS,
   //|---------+---------+---------+---------+---------+---------+---------+---------+---------+---------|
-        JU_GRV,    JP_AT,  JP_CIRC,   JU_EQL,  XXXXXXX,  JU_SCLN,  KC_COLN,  JU_LBRC,  JU_RBRC,  KC_DLSF,
+       JP_PIPE,    JP_AT,  JP_TILD,   JU_EQL,  XXXXXXX,  JU_SCLN,  KC_COLN,  JU_LBRC,  JU_RBRC,  KC_DLSF,
   //|---------+---------+---------+---------+---------+---------+---------+---------+---------+---------|
-       JP_PIPE,  JP_TILD,  JP_PLUS,  JP_ASTR,  JP_MHEN,  XXXXXXX,  JU_BSLS,  JP_LCBR,  JP_RCBR,  JP_UNDS,
+        JU_GRV,  JP_CIRC,  JP_PLUS,  JP_ASTR,  JP_MHEN,  XXXXXXX,  JU_BSLS,  JP_LCBR,  JP_RCBR,  JP_UNDS,
   //`---------+---------+---------+---------+---------+---------+---------+---------+---------+---------'
                                                  LOWER,    RAISE
   //                                        `---------|---------'
